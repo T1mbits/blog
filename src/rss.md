@@ -1,0 +1,3 @@
+[Subscribe](https://t1mbits.github.io/blog/rss.xml) to my RSS feed :D
+
+##### too lazy to set up an `mdbook` theme to put it in the header so I guess this'll have to do...
