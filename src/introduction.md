@@ -1,3 +1,5 @@
 # timbits wont stop yapping
 
 I dunno somebody asked me to write about my pointless coding endeavours, and I enjoy yapping about them, so I guess that's what this is. You can find a list of my posts on the left, categorized by project/general ideas. I'm using [`mdbook`](https://github.com/rust-lang/mdBook) to create this page, so the posts on the left are in a numbered list I  and can't seem to remove the numbers. I will probably get around to creating/implementing my own page layout eventually, but this will do for now I guess.
+
+[RSS as per notchoc's request](../feed.xml)
