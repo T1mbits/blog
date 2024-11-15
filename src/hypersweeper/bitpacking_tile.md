@@ -168,7 +168,7 @@ pub fn set(&mut self, index: usize, mut byte: u8) {
 
 The `bit_position`, `byte_index`, and `bit_offset` have the exact same implementation in the setters as they do the getters, so I'll omit their explanation here.
 
-We can now get on to preparing the target byte and the input byte for writing. First, we need to clear the relevant tile's bits within the target byte so that we can properly write to them. We can create a mask by first shifting 3 1 bits (`0b111`) to the correct position by using `bit_offset` instead of shifting the byte itself with `bit_offset` in order to prevent messing with other tiles' data. Then, we can use the `!` operator we can invert the mask and use the `&=` operation to clear the relevant bits without touching the other data in the target byte.
+We can now get on to preparing the target byte and the input byte for writing. First, we need to clear the relevant tile's bits within the target byte so that we can properly write to them. We can create a mask by first shifting 3 1 bits (`0b111`) to the correct position by using `bit_offset` instead of shifting the byte itself with `bit_offset` in order to prevent messing with other tiles' data. Then, using the `!` operator we can invert the mask and use the `&=` operation to clear the relevant bits without touching the other data in the target byte.
 
 ```rust, noplayground
 self.tile_data[byte_index] &= !(0b111 << bit_offset);
@@ -180,7 +180,7 @@ Next, we have to prepare the bits that will be written. We can shift the bits in
 self.tile_data[byte_index] |= byte << bit_offset;
 ```
 
-For the tiles that have their data stored across bytes, we again have to create a special case for them. The code used to write the remaining bits is mostly just a combination of the getter stray bit logic and the recently explained overwriting logic. We must another create a mask for the bits, but this time we shift it to the right cover the target bits rather than shift the target bits into position like in the getter implementation. This is again done by calculating the inverse of `bit_offset` within a range of 0-7. We can then invert the mask and apply it with the `&=` operator to clear the bits we'd like to write to. Then, we can do the same thing to the input byte but use `|=` to safely write our input bits to the desired bits.
+For the tiles that have their data stored across bytes, we again have to create a special case for them. The code used to write the remaining bits is mostly just a combination of the logic used in the getter's implementation of reading remaining bits in the next byte and the above overwriting logic. We must another create a mask for the bits, but this time we shift it to the right cover the target bits rather than shift the target bits into position like in the getter implementation. This is again done by calculating the inverse of `bit_offset` within a range of 0-7. We can then invert the mask and apply it with the `&=` operator to clear the bits we'd like to write to. Then, we can do the same thing to the input byte but use `|=` to safely write our input bits to the desired bits.
 
 ```rust, noplayground
 if bit_offset > 5 {

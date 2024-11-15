@@ -20,7 +20,7 @@ for file in $(find src -mindepth 2 -name "*.md" -type f | xargs -I{} git log -1 
         <title>${TITLE}</title>
         <link>${LINK}</link>
         <pubDate>${PUB_DATE}</pubDate>
-        <description>${TITLE}</description>
+        <description>Now see this is automated and I'm too lazy to create an automated description system, and if I pasted the contents of my posts into a description tag it would most definitely cause problems</description>
     </item>"
 done
 
