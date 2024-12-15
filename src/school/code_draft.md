@@ -30,9 +30,9 @@ This project was written in Python 3.12.7, I don't think there will be any issue
 The `pygame` and `orjson` packages are required for this program. Run one of the following commands to install the required dependencies. If you have a different way of installing the required python packages, do that instead.
 
 ```bash
-python -m pip install pygame==2.6.0 orjson==3.10.7
+python -m pip install pygame orjson
 # or
-pip install pygame==2.6.0 orjson==3.10.7
+pip install pygame orjson
 ```
 
 This project also uses the `abc`, `enum`, `os`, `sys`, and `typing` modules from the default python package.
